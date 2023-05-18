@@ -1,0 +1,70 @@
+.card {
+  height: 100px;
+  width: 500px;
+
+  display: flex;
+  border: 1px solid black;
+  border-radius: 10px;
+
+  background-color: white;
+  font-size: small;
+}
+
+.vehicle-type-icon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.vehicle-type-icon img {
+  height: 75px;
+  width: 75px;
+  margin: 5px;
+}
+
+.data-container {
+  flex: auto;
+  height: 100px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-data,
+.extra-data {
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.data {
+  justify-content: center;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  justify-content: space-evenly;
+  height: auto;
+  padding: 10px;
+}
+
+button {
+  height: 40px;
+  width: 40px;
+  margin: 5px;
+  border: 2px solid black;
+}
+
+.borrar {
+  background-color: red;
+}
+.editar {
+  background-color: yellow;
+}
+
+.label {
+  font-size: smaller;
+}

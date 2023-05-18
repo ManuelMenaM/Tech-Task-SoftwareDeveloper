@@ -1,0 +1,17 @@
+.list-container {
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+ul {
+    list-style-type: none;
+}
+li {
+    margin-bottom: 5px;
+}
+
+.pagination-controls {
+    align-self: center;
+}

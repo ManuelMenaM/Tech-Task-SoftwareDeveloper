@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="vehicle-type-icon">
+    <img *ngIf="vehicle.getType() === 'Car'" [src]="carImg" [alt]="vehicle.getType()">
+    <img *ngIf="vehicle.getType() === 'Motorcycle'" [src]="motorcycleImg" [alt]="vehicle.getType()">
+    <img *ngIf="vehicle.getType() === 'Truck'" [src]="truckImg" [alt]="vehicle.getType()">
+  </div>
+  <div class="data-container">
+    <div class="main-data">
+      <div class="data">
+        <span class="label">License Plate </span>
+        <br>
+        <span>{{vehicle.licensePlate}}</span>
+      </div>
+      <div class="data">
+        <span class="label">Brand </span>
+        <br>
+        <span>{{vehicle.brand}}</span>
+      </div>
+      <div class="data">
+        <span class="label">Model </span>
+        <br>
+        <span>{{vehicle.model}}</span>
+      </div>
+      <div class="data">
+        <span class="label">Year </span>
+        <br>
+        <span>{{vehicle.year}}</span>
+      </div>
+      <div class="data">
+        <span class="label">Color </span>
+        <br>
+        <span>{{vehicle.color}}</span>
+      </div>
+    </div>
+    <div class="extra-data" *ngIf="vehicle.getType() === 'Car'">
+      <div class="data">
+        <span class="label">Door number </span>
+        <br>
+        {{vehicle.numDoors}}
+      </div>
+    </div>
+    <div class="extra-data" *ngIf="vehicle.getType() === 'Motorcycle'">
+      <div class="data">
+        <span class="label">Engine size </span>
+        <br>
+        {{vehicle.engineSize}}
+      </div>
+    </div>
+    <div class="extra-data" *ngIf="vehicle.getType() === 'Truck'">
+      <div class="data">
+        <span class="label">Cargo capacity </span>
+        <br>
+        {{vehicle.cargoCapacity}}
+      </div>
+    </div>
+  </div>
+
+  <div class="actions" *ngIf="isAdmin">
+    <button type="button" (click)="onDelete()" class="borrar">x</button>
+    <button type="button" (click)="onEdit()" class="editar">e</button>
+  </div>
+</div>

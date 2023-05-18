@@ -1,0 +1,11 @@
+<div class="list-container">
+  <ul>
+    <li *ngFor="
+        let vehicle of vehicles | paginate : { itemsPerPage: 5, currentPage: p }
+      ">
+      <app-vehicle-list-item [vehicle]="vehicle"></app-vehicle-list-item>
+    </li>
+
+  </ul>
+  <pagination-controls class="pagination-controls" (pageChange)=" p=$event"></pagination-controls>
+</div>
