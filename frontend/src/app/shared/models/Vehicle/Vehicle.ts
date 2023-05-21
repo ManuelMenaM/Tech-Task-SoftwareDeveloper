@@ -1,22 +1,28 @@
 export abstract class Vehicle {
-  protected licensePlate: string;
-  protected brand: string;
-  protected model: string;
-  protected year: number;
-  protected color: string;
+  public type: string;
+  public licensePlate: string;
+  public brand: string;
+  public model: string;
+  public year: number;
+  public color: string;
 
   constructor(
+    type: string,
     licensePlate: string,
     brand: string,
     model: string,
     year: number,
     color: string
   ) {
+    this.type = type;
     this.licensePlate = licensePlate;
     this.brand = brand;
     this.model = model;
     this.year = year;
     this.color = color;
+  }
+  public getType(): string {
+    return this.type;
   }
 
   public getLicensePlate(): string {

@@ -1,10 +1,10 @@
-import { VehicleInterface } from "./VehicleInterface";
 import { Vehicle } from "./Vehicle";
 
-export class Truck extends Vehicle implements VehicleInterface {
-  private cargoCapacity: number;
+export class Truck extends Vehicle {
+  public cargoCapacity: number;
 
   constructor(
+    type: string,
     licensePlate: string,
     brand: string,
     model: string,
@@ -12,15 +12,11 @@ export class Truck extends Vehicle implements VehicleInterface {
     color: string,
     cargoCapacity: number
   ) {
-    super(licensePlate, brand, model, year, color);
+    super(type, licensePlate, brand, model, year, color);
     this.cargoCapacity = cargoCapacity;
   }
 
   public getCargoCapacity(): number {
     return this.cargoCapacity;
-  }
-
-  public getType(): string {
-    return "Truck";
   }
 }

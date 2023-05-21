@@ -1,10 +1,10 @@
-import { VehicleInterface } from 'src/app/shared/interfaces/VehicleInterface';
 import { Vehicle } from '../Vehicle';
 
-export class Car extends Vehicle implements VehicleInterface {
-  private numDoors: number;
+export class Car extends Vehicle {
+  public numDoors: number;
 
   constructor(
+    type: string,
     licensePlate: string,
     brand: string,
     model: string,
@@ -12,12 +12,8 @@ export class Car extends Vehicle implements VehicleInterface {
     color: string,
     numDoors: number
   ) {
-    super(licensePlate, brand, model, year, color);
+    super(type, licensePlate, brand, model, year, color);
     this.numDoors = numDoors;
-  }
-
-  getType(): string {
-    return 'Car';
   }
 
   public getNumDoors(): number {

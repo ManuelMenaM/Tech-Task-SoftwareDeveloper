@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +17,12 @@ import { LoginComponent } from './components/pages/login/login.component';
     VehicleListItemComponent,
     LoginComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgxPaginationModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgxPaginationModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

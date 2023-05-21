@@ -12,6 +12,7 @@ app.use(
 
 app.get("/api/vehicles", (req, res) => {
   res.send(sample_vehicles);
+  console.log("Vehiculos enviados: " + sample_vehicles);
 });
 
 const port = 5000;

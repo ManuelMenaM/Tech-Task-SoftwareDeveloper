@@ -1,8 +1,8 @@
 <div class="card">
   <div class="vehicle-type-icon">
-    <img *ngIf="vehicle.getType() === 'Car'" [src]="carImg" [alt]="vehicle.getType()">
-    <img *ngIf="vehicle.getType() === 'Motorcycle'" [src]="motorcycleImg" [alt]="vehicle.getType()">
-    <img *ngIf="vehicle.getType() === 'Truck'" [src]="truckImg" [alt]="vehicle.getType()">
+    <img *ngIf="vehicle.type === 'Car'" [src]="carImg" [alt]="vehicle.type">
+    <img *ngIf="vehicle.type === 'Motorcycle'" [src]="motorcycleImg" [alt]="vehicle.type">
+    <img *ngIf="vehicle.type === 'Truck'" [src]="truckImg" [alt]="vehicle.type">
   </div>
   <div class="data-container">
     <div class="main-data">
@@ -32,22 +32,22 @@
         <span>{{vehicle.color}}</span>
       </div>
     </div>
-    <div class="extra-data" *ngIf="vehicle.getType() === 'Car'">
+    <div class="extra-data" *ngIf="vehicle.type === 'Car'">
       <div class="data">
         <span class="label">Door number </span>
         <br>
         {{vehicle.numDoors}}
       </div>
     </div>
-    <div class="extra-data" *ngIf="vehicle.getType() === 'Motorcycle'">
+    <div class="extra-data" *ngIf="vehicle.type === 'Motorcycle'">
       <div class="data">
         <span class="label">Engine size </span>
         <br>
         {{vehicle.engineSize}}
       </div>
     </div>
-    <div class="extra-data" *ngIf="vehicle.getType() === 'Truck'">
-      <div class="data">
+    <div class="extra-data" *ngIf="vehicle.type === 'Truck'">
+      <div class="data" *ng>
         <span class="label">Cargo capacity </span>
         <br>
         {{vehicle.cargoCapacity}}

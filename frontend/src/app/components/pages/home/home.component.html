@@ -1,4 +1,4 @@
-<div class="list-container">
+<div class="list-container" *ngIf="vehiclesObservable | async as vehicles">
   <ul>
     <li *ngFor="
         let vehicle of vehicles | paginate : { itemsPerPage: 5, currentPage: p }
