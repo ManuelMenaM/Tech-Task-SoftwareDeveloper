@@ -1,6 +1,12 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import cors from "cors";
-import { sample_vehicles } from "./data";
+
+import vehicleRouter from "./routers/vehicle.router";
+
+import { dbconnect } from "./configs/database.config";
+dbconnect();
 
 const app = express();
 app.use(
@@ -10,10 +16,7 @@ app.use(
   })
 );
 
-app.get("/api/vehicles", (req, res) => {
-  res.send(sample_vehicles);
-  console.log("Vehiculos enviados: " + sample_vehicles);
-});
+app.use("/api/vehicles", vehicleRouter);
 
 const port = 5000;
 app.listen(port, () => {
