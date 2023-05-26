@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-vehicle-list-item',
@@ -6,10 +7,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./vehicle-list-item.component.css'],
 })
 export class VehicleListItemComponent {
+  constructor(public auth: AuthService) {}
   @Input()
   vehicle!: any;
-
-  isAdmin: boolean = true;
+  @Input()
+  isAdmin: boolean | undefined;
 
   carImg: string = '../../../../../assets/images/car-icon.png';
   motorcycleImg: string = '../../../../../assets/images/motorcycle-icon.png';

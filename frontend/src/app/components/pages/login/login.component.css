@@ -1,0 +1,11 @@
+a:hover {
+  cursor: pointer;
+  background: blue;
+  color: white;
+}
+a {
+  padding: 1rem;
+  display: inline-block;
+  width: 100%;
+  min-width: 8rem;
+}

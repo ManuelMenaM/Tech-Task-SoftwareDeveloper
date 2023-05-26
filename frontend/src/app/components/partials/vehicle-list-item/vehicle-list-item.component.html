@@ -55,7 +55,7 @@
     </div>
   </div>
 
-  <div class="actions" *ngIf="isAdmin">
+  <div class="actions" *ngIf="(auth.isAuthenticated$ | async)">
     <button type="button" (click)="onDelete()" class="borrar">x</button>
     <button type="button" (click)="onEdit()" class="editar">e</button>
   </div>
