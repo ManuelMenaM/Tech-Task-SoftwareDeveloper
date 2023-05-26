@@ -14,7 +14,7 @@ export class VehicleListItemComponent {
   isAdmin: boolean | undefined;
 
   carImg: string = '../../../../../assets/images/car-icon.png';
-  motorcycleImg: string = '../../../../../assets/images/motorcycle-icon.png';
+  boatImg: string = '../../../../../assets/images/boat-icon.png';
   truckImg: string = '../../../../../assets/images/truck-icon.png';
 
   public onDelete(): void {

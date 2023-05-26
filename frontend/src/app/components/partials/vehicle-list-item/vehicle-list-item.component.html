@@ -1,7 +1,7 @@
 <div class="card">
   <div class="vehicle-type-icon">
     <img *ngIf="vehicle.type === 'Car'" [src]="carImg" [alt]="vehicle.type">
-    <img *ngIf="vehicle.type === 'Motorcycle'" [src]="motorcycleImg" [alt]="vehicle.type">
+    <img *ngIf="vehicle.type === 'Boat'" [src]="boatImg" [alt]="vehicle.type">
     <img *ngIf="vehicle.type === 'Truck'" [src]="truckImg" [alt]="vehicle.type">
   </div>
   <div class="data-container">
@@ -12,19 +12,9 @@
         <span>{{vehicle.licensePlate}}</span>
       </div>
       <div class="data">
-        <span class="label">Brand </span>
+        <span class="label">CV </span>
         <br>
-        <span>{{vehicle.brand}}</span>
-      </div>
-      <div class="data">
-        <span class="label">Model </span>
-        <br>
-        <span>{{vehicle.model}}</span>
-      </div>
-      <div class="data">
-        <span class="label">Year </span>
-        <br>
-        <span>{{vehicle.year}}</span>
+        <span>{{vehicle.cv}}</span>
       </div>
       <div class="data">
         <span class="label">Color </span>
@@ -33,24 +23,24 @@
       </div>
     </div>
     <div class="extra-data" *ngIf="vehicle.type === 'Car'">
-      <div class="data">
-        <span class="label">Door number </span>
+      <div class="data" *ngFor="let extra of vehicle.extras">
+        <span class="label">Extra </span>
         <br>
-        {{vehicle.numDoors}}
+        {{extra}}
       </div>
     </div>
-    <div class="extra-data" *ngIf="vehicle.type === 'Motorcycle'">
+    <div class="extra-data" *ngIf="vehicle.type === 'Boat'">
       <div class="data">
-        <span class="label">Engine size </span>
+        <span class="label">Model </span>
         <br>
-        {{vehicle.engineSize}}
+        {{vehicle.model}}
       </div>
     </div>
     <div class="extra-data" *ngIf="vehicle.type === 'Truck'">
-      <div class="data" *ng>
-        <span class="label">Cargo capacity </span>
+      <div class="data">
+        <span class="label">Max. cargo load </span>
         <br>
-        {{vehicle.cargoCapacity}}
+        {{vehicle.load}}
       </div>
     </div>
   </div>

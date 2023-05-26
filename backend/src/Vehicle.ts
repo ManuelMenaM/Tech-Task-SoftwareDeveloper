@@ -1,24 +1,13 @@
 export abstract class Vehicle {
   public type: string;
   public licensePlate: string;
-  public brand: string;
-  public model: string;
-  public year: number;
+  public cv: number;
   public color: string;
 
-  constructor(
-    type: string,
-    licensePlate: string,
-    brand: string,
-    model: string,
-    year: number,
-    color: string
-  ) {
+  constructor(type: string, licensePlate: string, cv: number, color: string) {
     this.type = type;
     this.licensePlate = licensePlate;
-    this.brand = brand;
-    this.model = model;
-    this.year = year;
+    this.cv = cv;
     this.color = color;
   }
 
@@ -30,19 +19,17 @@ export abstract class Vehicle {
     return this.licensePlate;
   }
 
-  public getBrand(): string {
-    return this.brand;
-  }
-
-  public getModel(): string {
-    return this.model;
-  }
-
-  public getYear(): number {
-    return this.year;
+  public getCv(): number {
+    return this.cv;
   }
 
   public getColor(): string {
     return this.color;
   }
+}
+
+export enum VehicleTypes {
+  CAR = "Car",
+  BOAT = "Boat",
+  TRUCK = "Truck",
 }

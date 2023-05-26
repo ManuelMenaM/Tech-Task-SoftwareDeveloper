@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { VehicleService } from 'src/app/services/vehicle.service';
-import { Vehicle } from 'src/app/shared/models/Vehicle/Vehicle';
 import { Car } from 'src/app/shared/models/Vehicle/VehicleTypes/Car';
-import { Motorcycle } from 'src/app/shared/models/Vehicle/VehicleTypes/Motorcycle';
+import { Boat } from 'src/app/shared/models/Vehicle/VehicleTypes/Boat';
 import { Truck } from 'src/app/shared/models/Vehicle/VehicleTypes/Truck';
 
 @Component({
@@ -18,15 +17,19 @@ export class HomeComponent {
 
   constructor(private vehicleService: VehicleService) {
     this.vehiclesObservable = vehicleService.getVehicles();
-    console.log('wow');
     this.vehiclesObservable.subscribe((serverVehicles) => {
+      console.log(serverVehicles);
+
       serverVehicles.forEach((vehicle) => {
         if (vehicle.type === 'Car') {
           this.vehicles.push(this.instantiateCar(vehicle));
-        } else if (vehicle.type === 'Motorcycle') {
-          this.vehicles.push(this.instantiateMotorcycle(vehicle));
+          console.log('Car instantiated');
+        } else if (vehicle.type === 'Boat') {
+          this.vehicles.push(this.instantiateBoat(vehicle));
+          console.log('Boat instantiated');
         } else if (vehicle.type === 'Truck') {
           this.vehicles.push(this.instantiateTruck(vehicle));
+          console.log('Truck instantiated');
         }
       });
     });
@@ -37,35 +40,26 @@ export class HomeComponent {
 
   private instantiateCar(vehicle: any): Car {
     return new Car(
-      vehicle.type,
       vehicle.licensePlate,
-      vehicle.brand,
-      vehicle.model,
-      vehicle.year,
+      vehicle.cv,
       vehicle.color,
-      vehicle.numDoors
+      vehicle.extras
     );
   }
-  private instantiateMotorcycle(vehicle: any): Motorcycle {
-    return new Motorcycle(
-      vehicle.type,
+  private instantiateBoat(vehicle: any): Boat {
+    return new Boat(
       vehicle.licensePlate,
-      vehicle.brand,
-      vehicle.model,
-      vehicle.year,
+      vehicle.cv,
       vehicle.color,
-      vehicle.engineSize
+      vehicle.model
     );
   }
   private instantiateTruck(vehicle: any): Truck {
     return new Truck(
-      vehicle.type,
       vehicle.licensePlate,
-      vehicle.brand,
-      vehicle.model,
-      vehicle.year,
+      vehicle.cv,
       vehicle.color,
-      vehicle.cargoCapacity
+      vehicle.load
     );
   }
 }

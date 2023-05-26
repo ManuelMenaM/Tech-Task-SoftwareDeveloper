@@ -20,5 +20,5 @@ app.use("/api/vehicles", vehicleRouter);
 
 const port = 5000;
 app.listen(port, () => {
-  console.log("Website served on http://localhost:" + port);
+  console.log("Backend served on http://localhost:" + port);
 });

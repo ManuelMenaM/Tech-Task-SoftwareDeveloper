@@ -1,22 +1,14 @@
-import { Vehicle } from "./Vehicle";
+import { Vehicle, VehicleTypes } from "./Vehicle";
 
 export class Truck extends Vehicle {
-  public cargoCapacity: number;
+  public load: number;
 
-  constructor(
-    type: string,
-    licensePlate: string,
-    brand: string,
-    model: string,
-    year: number,
-    color: string,
-    cargoCapacity: number
-  ) {
-    super(type, licensePlate, brand, model, year, color);
-    this.cargoCapacity = cargoCapacity;
+  constructor(licensePlate: string, cv: number, color: string, load: number) {
+    super(VehicleTypes.TRUCK, licensePlate, cv, color);
+    this.load = load;
   }
 
-  public getCargoCapacity(): number {
-    return this.cargoCapacity;
+  public getLoad(): number {
+    return this.load;
   }
 }

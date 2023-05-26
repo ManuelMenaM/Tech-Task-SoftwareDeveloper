@@ -1,22 +1,19 @@
-import { Vehicle } from '../Vehicle';
+import { Vehicle, VehicleTypes } from '../Vehicle';
 
 export class Car extends Vehicle {
-  public numDoors: number;
+  private extras: string[];
 
   constructor(
-    type: string,
     licensePlate: string,
-    brand: string,
-    model: string,
-    year: number,
+    cv: number,
     color: string,
-    numDoors: number
+    extras: string[]
   ) {
-    super(type, licensePlate, brand, model, year, color);
-    this.numDoors = numDoors;
+    super(VehicleTypes.CAR, licensePlate, cv, color);
+    this.extras = extras;
   }
 
-  public getNumDoors(): number {
-    return this.numDoors;
+  public getExtras(): string[] {
+    return this.extras;
   }
 }
