@@ -1,6 +1,6 @@
-import { Car } from "./Car";
-import { Boat, BoatSize } from "./Boat";
-import { Truck } from "./Truck";
+import { Car } from "./models/car.model";
+import { Boat, BoatSize } from "./models/boat.model";
+import { Truck } from "./models/truck.model";
 
 export const sample_vehicles: any[] = [];
 // Crear instancias de Car

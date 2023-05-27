@@ -1,28 +1,28 @@
-import { Schema, model } from "mongoose";
-import { Vehicle, VehicleTypes } from "./vehicle.model";
+import { Schema } from "mongoose";
+import { Vehicle, VehicleModel, VehicleTypes } from "./vehicle.model";
 
 export interface Truck extends Vehicle {
   load: number;
 }
 
-export const TruckSchema = new Schema<Truck>(
-  {
-    type: { type: String, enum: VehicleTypes, required: true },
-    licensePlate: { type: String, required: true },
-    cv: { type: Number, required: true },
-    color: { type: String, required: true },
-    load: { type: Number, required: true },
-  },
-  {
-    toJSON: {
-      virtuals: true,
-    },
+export class Truck extends Vehicle implements Truck {
+  public load: number;
 
-    toObject: {
-      virtuals: true,
-    },
-    timestamps: true,
+  constructor(licensePlate: string, cv: number, color: string, load: number) {
+    super(VehicleTypes.TRUCK, licensePlate, cv, color);
+    this.load = load;
   }
-);
 
-export const TruckModel = model<Truck>("Truck", TruckSchema);
+  public getLoad(): number {
+    return this.load;
+  }
+}
+
+export const TruckSchema = new Schema<Truck>({
+  load: {
+    type: Number,
+    required: true,
+  },
+});
+
+export const TruckModel = VehicleModel.discriminator("Truck", TruckSchema);

@@ -1,5 +1,5 @@
-import { Schema, model } from "mongoose";
-import { Vehicle, VehicleTypes } from "./vehicle.model";
+import { Schema } from "mongoose";
+import { Vehicle, VehicleModel, VehicleTypes } from "./vehicle.model";
 
 export interface Boat extends Vehicle {
   model: BoatSize;
@@ -11,29 +11,30 @@ export enum BoatSize {
   Big = "Big",
 }
 
-export const BoatSchema = new Schema<Boat>(
-  {
-    type: { type: String, enum: VehicleTypes, required: true },
-    licensePlate: { type: String, required: true },
-    cv: { type: Number, required: true },
-    color: { type: String, required: true },
-    model: {
-      type: String,
-      enum: BoatSize,
-      default: BoatSize.Small,
-      required: true,
-    },
-  },
-  {
-    toJSON: {
-      virtuals: true,
-    },
+export class Boat extends Vehicle implements Boat {
+  public model: BoatSize;
 
-    toObject: {
-      virtuals: true,
-    },
-    timestamps: true,
+  constructor(
+    licensePlate: string,
+    cv: number,
+    color: string,
+    model: BoatSize
+  ) {
+    super(VehicleTypes.BOAT, licensePlate, cv, color);
+    this.model = model;
   }
-);
 
-export const BoatModel = model<Boat>("Boat", BoatSchema);
+  public getModel(): BoatSize {
+    return this.model;
+  }
+}
+
+export const BoatSchema = new Schema<Boat>({
+  model: {
+    type: String,
+    enum: ["Small", "Medium", "Big"],
+    required: true,
+  },
+});
+
+export const BoatModel = VehicleModel.discriminator("Boat", BoatSchema);

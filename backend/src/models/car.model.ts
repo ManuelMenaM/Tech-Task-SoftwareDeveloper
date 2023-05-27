@@ -1,28 +1,33 @@
-import { Schema, model } from "mongoose";
-import { Vehicle, VehicleTypes } from "./vehicle.model";
+import { Schema } from "mongoose";
+import { Vehicle, VehicleModel, VehicleTypes } from "./vehicle.model";
 
 export interface Car extends Vehicle {
   extras: string[];
 }
 
-export const CarSchema = new Schema<Car>(
-  {
-    type: { type: String, enum: VehicleTypes, required: true },
-    licensePlate: { type: String, required: true },
-    cv: { type: Number, required: true },
-    color: { type: String, required: true },
-    extras: { type: [String], required: false },
-  },
-  {
-    toJSON: {
-      virtuals: true,
-    },
+export class Car extends Vehicle implements Car {
+  public extras: string[];
 
-    toObject: {
-      virtuals: true,
-    },
-    timestamps: true,
+  constructor(
+    licensePlate: string,
+    cv: number,
+    color: string,
+    extras: string[]
+  ) {
+    super(VehicleTypes.CAR, licensePlate, cv, color);
+    this.extras = extras;
   }
-);
 
-export const CarModel = model<Car>("Car", CarSchema);
+  public getExtras(): string[] {
+    return this.extras;
+  }
+}
+
+export const CarSchema = new Schema<Car>({
+  extras: {
+    type: [String],
+    required: true,
+  },
+});
+
+export const CarModel = VehicleModel.discriminator("Car", CarSchema);
