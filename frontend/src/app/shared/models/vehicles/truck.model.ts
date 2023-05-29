@@ -1,6 +1,10 @@
-import { Vehicle, VehicleTypes } from '../Vehicle';
+import { Vehicle, VehicleTypes } from './vehicle.model';
 
-export class Truck extends Vehicle {
+export interface Truck extends Vehicle {
+  load: number;
+}
+
+export class Truck extends Vehicle implements Truck {
   public load: number;
 
   constructor(licensePlate: string, cv: number, color: string, load: number) {

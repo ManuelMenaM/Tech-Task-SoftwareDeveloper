@@ -1,4 +1,17 @@
-export abstract class Vehicle {
+export interface Vehicle {
+  type: VehicleTypes;
+  licensePlate: string;
+  cv: number;
+  color: string;
+}
+
+export enum VehicleTypes {
+  CAR = 'Car',
+  BOAT = 'Boat',
+  TRUCK = 'Truck',
+}
+
+export abstract class Vehicle implements Vehicle {
   public type: VehicleTypes;
   public licensePlate: string;
   public cv: number;
@@ -16,7 +29,7 @@ export abstract class Vehicle {
     this.color = color;
   }
 
-  public getType(): VehicleTypes {
+  public getType(): string {
     return this.type;
   }
 
@@ -31,10 +44,4 @@ export abstract class Vehicle {
   public getColor(): string {
     return this.color;
   }
-}
-
-export enum VehicleTypes {
-  CAR = 'Car',
-  BOAT = 'Boat',
-  TRUCK = 'Truck',
 }

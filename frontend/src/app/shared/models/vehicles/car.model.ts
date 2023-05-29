@@ -1,7 +1,11 @@
-import { Vehicle, VehicleTypes } from '../Vehicle';
+import { Vehicle, VehicleTypes } from './vehicle.model';
 
-export class Car extends Vehicle {
-  private extras: string[];
+export interface Car extends Vehicle {
+  extras: string[];
+}
+
+export class Car extends Vehicle implements Car {
+  public extras: string[];
 
   constructor(
     licensePlate: string,

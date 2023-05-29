@@ -11,6 +11,8 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { UserProfileComponent } from './components/pages/user-profile/user-profile.component';
+import { BarChartComponent } from './components/partials/bar-chart/bar-chart.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { UserProfileComponent } from './components/pages/user-profile/user-profi
     LoginComponent,
     DashboardComponent,
     UserProfileComponent,
+    BarChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { UserProfileComponent } from './components/pages/user-profile/user-profi
         redirect_uri: window.location.origin,
       },
     }),
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

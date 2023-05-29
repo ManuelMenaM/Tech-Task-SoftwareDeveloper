@@ -1,1 +1,14 @@
-<p>dashboard works!</p>
+<div class="container" *ngIf="vehiclesObservable | async as vehicles">
+    <app-bar-chart [vehicles]="vehicles"></app-bar-chart>
+</div>
+<!-- <div class="list-container" *ngIf="vehiclesObservable | async as vehicles">
+    <ul>
+        <li *ngFor="
+          let vehicle of vehicles | paginate : { itemsPerPage: 5, currentPage: pagination }
+        ">
+            <app-vehicle-list-item [vehicle]="vehicle"></app-vehicle-list-item>
+        </li>
+
+    </ul>
+    <pagination-controls class="pagination-controls" (pageChange)=" pagination=$event"></pagination-controls>
+</div> -->
