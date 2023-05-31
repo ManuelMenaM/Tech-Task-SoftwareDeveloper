@@ -1,40 +1,86 @@
 # Tech-Task-SoftwareDeveloper
 
-Technology stack:
--Angular ^15
--Node ^16/Express ^4.18
--MongoDB (use atlas free tier to ease the task)
 
-1-Create a vehicle's monitoring system that allows admin to post,edit, create and delete different vehicles (cars, trucks and boats). The app will have at least 4 views.
 
-- Login view with Auth0 that allows to create new users, but not admins.
-- Main view with a table that shows the vehicles and a paginator. In case that user's is an admin, POST,EDIT and DELETE buttons must been show, but normal user only get vehicle's data.
-- Dashboard view. A view with a bar's graph that count how many elements of every vehicle we can find on the database. ONLY Admin must have access to this view.
-- Admin/User profile view with the name,photo and role.
+# README - Tech-Task-SoftwareDeveloper
 
-2-Create a Node/Express API with GET/POST/PUT/DELETE methods that get the data from a MongoDB.
+Este es el README para el proyecto Tech-Task-SoftwareDeveloper
 
-3-Add testing to the app an the API.
+## Requisitos previos
 
-4-Create a README about deployment of the application and the API.
+Antes de comenzar, asegúrate de tener instalado lo siguiente en tu sistema:
 
-Vehicle data example:
+- Node.js (^16.x)
+- Angular CLI (^15.x)
 
-Vehicle = {
-  'licensePlate': '57689 LKK',
-  'cv': 250,
-  'color': 'red'
-}
+## Configuración
 
-Car extends Vehicle = {
-  'extras': ['ABS','Radio']
-}
+1. Clona este repositorio desde GitHub:
+    https://github.com/ManuelMenaM/Tech-Task-SoftwareDeveloper.git
+    
+2. Instala las dependencias del proyecto abriendo una terminal y escribiendo:
 
-Truck extends Vehicle = {
-  'load': 3000
-}
+   ```shell
+   cd frontend/
+   npm install
+   ```
+   y
+   
+   ```shell
+   cd backend/
+   npm install
+   ```
 
-Boat extends Vehicle = {
-  'model': ENUM = 'Small'
-}
+## Configuración de la base de datos
+
+1. Crea una cuenta en MongoDB Atlas (https://www.mongodb.com/cloud/atlas) si aún no tienes una.
+2. Crea un clúster gratuito en MongoDB Atlas.
+3. Copia la cadena de conexión de tu clúster.
+
+## Configuración del servidor
+
+1. Navega al directorio del backend y crea un archivo `.env` en el directrio, a continuación, establece las siguientes variables de entorno:
+
+   ```dotenv
+   MONGO_URI=<CADENA_DE_CONEXION_MONGODB_ATLAS>
+   ```
+
+   Asegúrate de reemplazar `<CADENA_DE_CONEXION_MONGODB_ATLAS>` con la cadena de conexión de tu clúster MongoDB Atlas.
+   
+2. Navega al directorio de la aplicación Angular:
+
+    ```shell
+    cd backend/
+    ```
+
+3. Inicia el servidor:
+
+   ```shell
+   npm start
+   ```
+
+## Configuración de la aplicación
+
+1. Navega al directorio de la aplicación Angular:
+
+   ```shell
+   cd frontend/
+   ```
+
+2. Inicia la aplicación:
+
+   ```shell
+   ng serve
+   ```
+
+   La aplicación Angular se ejecutará en `http://localhost:4200` por defecto.
+
+## Uso
+
+- Accede a la aplicación desde tu navegador web en `http://localhost:4200`.
+- Inicia sesión utilizando tu cuenta o crea una nueva cuenta.
+- Explora las diferentes vistas para administrar los vehículos y ver los datos correspondientes.
+
+
+
 
