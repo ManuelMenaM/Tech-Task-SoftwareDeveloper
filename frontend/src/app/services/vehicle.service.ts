@@ -13,7 +13,12 @@ import { VEHICLES_URL } from '../shared/constants/urls';
 export class VehicleService {
   constructor(private http: HttpClient) {}
 
-  getVehicles(): Observable<(Car | Boat | Truck)[]> {
-    return this.http.get<(Car | Boat | Truck)[]>(VEHICLES_URL);
+  getVehicles(): Observable<Vehicle[]> {
+    return this.http.get<Vehicle[]>(VEHICLES_URL);
+  }
+
+  deleteVehicle(vehicle: Vehicle): Observable<Vehicle> {
+    const url = `${VEHICLES_URL}/${vehicle.licensePlate}`;
+    return this.http.delete<Vehicle>(url);
   }
 }

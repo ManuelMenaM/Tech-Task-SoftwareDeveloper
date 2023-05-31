@@ -1,0 +1,46 @@
+<form class="edit-form" (ngSubmit)="onSubmit()">
+    <div class="">
+        <label for="type">Vehicle type</label>
+        <input type="text" name="type" id="type" [(ngModel)]="vehicle.type" disabled>
+        <!-- <select name="type" id="type-select" [value]="vehicle.type">
+            <option value="" *ngFor="let type of keys(vehicleTypes)" [value]="type">{{type}}</option>
+        </select> -->
+    </div>
+    <div class="">
+        <label for="licensePlate">License Plate</label>
+        <input type="text" name="licensePlate" id="licensePlate" [(ngModel)]="vehicle.licensePlate" disabled>
+    </div>
+    <div class="">
+        <label for="cv">CV</label>
+        <input type="text" name="cv" id="cv" [(ngModel)]="vehicle.cv" />
+    </div>
+    <div class="">
+        <label for="color">Color</label>
+        <input type="text" name="color" id="color" [(ngModel)]="vehicle.color" />
+    </div>
+
+    <div class="" *ngIf="vehicle.type === vehicleTypes.CAR">
+        <div>
+            <label for="extras">Extras</label>
+            <div *ngFor="let extra of vehicle.extras">
+                <input type="text" [value]="extra">
+            </div>
+        </div>
+    </div>
+    <div class="" *ngIf="vehicle.type === vehicleTypes.BOAT">
+        <label for="model">Model</label>
+        <select name="model" id="model-select" [(ngModel)]="vehicle.model" [value]="vehicle.model">
+            <option value="" *ngFor="let size of boatSize" value="{{size}}">{{size}}</option>
+        </select>
+    </div>
+    <div class="" *ngIf="vehicle.type === vehicleTypes.TRUCK">
+        <label for="load">Max. cargo load</label>
+        <input type="number" value="{{vehicle.load}}">
+    </div>
+    <!-- <div>
+        <button type="submit">Editar</button>
+    </div>
+    <div>
+        <button (click)="onCancel()">Cancel</button>
+    </div> -->
+</form>

@@ -1,8 +1,8 @@
 <div class="card">
   <div class="vehicle-type-icon">
-    <img *ngIf="vehicle.type === 'Car'" [src]="carImg" [alt]="vehicle.type">
-    <img *ngIf="vehicle.type === 'Boat'" [src]="boatImg" [alt]="vehicle.type">
-    <img *ngIf="vehicle.type === 'Truck'" [src]="truckImg" [alt]="vehicle.type">
+    <img *ngIf="vehicle.type === vehicleTypes.CAR" [src]="carImg" [alt]="vehicle.type">
+    <img *ngIf="vehicle.type === vehicleTypes.BOAT" [src]="boatImg" [alt]="vehicle.type">
+    <img *ngIf="vehicle.type === vehicleTypes.TRUCK" [src]="truckImg" [alt]="vehicle.type">
   </div>
   <div class="data-container">
     <div class="main-data">
@@ -22,21 +22,21 @@
         <span>{{vehicle.color}}</span>
       </div>
     </div>
-    <div class="extra-data" *ngIf="vehicle.type === 'Car'">
+    <div class="extra-data" *ngIf="vehicle.type === vehicleTypes.CAR">
       <div class="data" *ngFor="let extra of vehicle.extras">
         <span class="label">Extra </span>
         <br>
         {{extra}}
       </div>
     </div>
-    <div class="extra-data" *ngIf="vehicle.type === 'Boat'">
+    <div class="extra-data" *ngIf="vehicle.type === vehicleTypes.BOAT">
       <div class="data">
         <span class="label">Model </span>
         <br>
         {{vehicle.model}}
       </div>
     </div>
-    <div class="extra-data" *ngIf="vehicle.type === 'Truck'">
+    <div class="extra-data" *ngIf="vehicle.type === vehicleTypes.TRUCK">
       <div class="data">
         <span class="label">Max. cargo load </span>
         <br>
@@ -46,7 +46,7 @@
   </div>
 
   <div class="actions" *ngIf="(auth.isAuthenticated$ | async)">
-    <button type="button" (click)="onDelete()" class="borrar">x</button>
-    <button type="button" (click)="onEdit()" class="editar">e</button>
+    <button type="button" (click)="onDelete(vehicle)" class="borrar">x</button>
+    <button type="button" (click)="onEdit(vehicle)" class="editar">e</button>
   </div>
 </div>

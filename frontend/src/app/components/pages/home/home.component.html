@@ -1,11 +1,25 @@
-<div class="list-container" *ngIf="vehiclesObservable | async as vehicles">
-  <ul>
-    <li *ngFor="
+<main class="container">
+  <div class="show-add-button-container" *ngIf="((auth.isAuthenticated$ | async) && !addingVehicle && !editingVehicle)">
+    <div>
+      <button (click)="showAddVehicle()">Add Vehicle</button>
+    </div>
+  </div>
+  <div class="add-vehicle-container" *ngIf="addingVehicle">
+    <app-add-vehicle></app-add-vehicle>
+  </div>
+  <div class="edit-vehicle-container" *ngIf="editingVehicle">
+    <app-edit-vehicle (onSubmitEditedVehicle)="editVehicle()" (onCancelEdit)="cancelEdit()"
+      [vehicle]="vehicleToEdit"></app-edit-vehicle>
+  </div>
+  <div class="list-container" *ngIf="vehiclesObservable | async as vehicles">
+    <ul>
+      <li *ngFor="
         let vehicle of vehicles | paginate : { itemsPerPage: 5, currentPage: pagination }
       ">
-      <app-vehicle-list-item [vehicle]="vehicle"></app-vehicle-list-item>
-    </li>
-
-  </ul>
-  <pagination-controls class="pagination-controls" (pageChange)=" pagination=$event"></pagination-controls>
-</div>
+        <app-vehicle-list-item (onDeleteVehicle)="deleteVehicle(vehicle)" (onShowEditVehicle)="showEditVehicle(vehicle)"
+          [vehicle]="vehicle"></app-vehicle-list-item>
+      </li>
+    </ul>
+    <pagination-controls class="pagination-controls" (pageChange)=" pagination=$event"></pagination-controls>
+  </div>
+</main>

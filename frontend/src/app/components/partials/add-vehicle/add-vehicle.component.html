@@ -1,0 +1,38 @@
+<form class="add-form" (ngSubmit)="onSubmit()">
+    <div class="">
+        <label for="type">Vehicle type</label>
+        <select name="type" id="type" (ngModelChange)="onTypeSelectChange()" [(ngModel)]="type">
+            <option value="" *ngFor="let type of keys(vehicleTypes)" [value]="type">{{type}}</option>
+        </select>
+    </div>
+    <div class="">
+        <label for="licensePlate">License Plate</label>
+        <input type="text" name="licensePlate" id="licensePlate" />
+    </div>
+    <div class="">
+        <label for="cv">CV</label>
+        <input type="text" name="cv" id="cv" />
+    </div>
+    <div class="">
+        <label for="color">Color</label>
+        <input type="text" name="color" id="color" />
+    </div>
+
+    <div class="" *ngIf="type === vehicleTypes.CAR">
+
+    </div>
+    <div class="" *ngIf="type === vehicleTypes.BOAT">
+        <div>
+            <label for="model">Model</label>
+            <select name="" id="">
+                <option value="" *ngFor="let size of keys(boatSize)" [value]="size">{{size}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="" *ngIf="type === vehicleTypes.TRUCK">
+        <div>
+            <label for="load">Max. cargo load</label>
+            <input type="number">
+        </div>
+    </div>
+</form>

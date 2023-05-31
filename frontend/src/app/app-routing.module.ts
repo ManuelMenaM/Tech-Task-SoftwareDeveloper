@@ -7,7 +7,7 @@ import { UserProfileComponent } from './components/pages/user-profile/user-profi
 import { AuthGuard } from '@auth0/auth0-angular';
 
 const routes: Routes = [
-  { path: '', canActivate: [AuthGuard], component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'login', canActivate: [AuthGuard], component: LoginComponent },
   {
     path: 'dashboard',

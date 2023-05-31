@@ -1,5 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import {
+  Vehicle,
+  VehicleTypes,
+} from 'src/app/shared/models/vehicles/vehicle.model';
 
 @Component({
   selector: 'app-vehicle-list-item',
@@ -7,21 +11,27 @@ import { AuthService } from '@auth0/auth0-angular';
   styleUrls: ['./vehicle-list-item.component.css'],
 })
 export class VehicleListItemComponent {
-  constructor(public auth: AuthService) {}
-  @Input()
-  vehicle!: any;
-  @Input()
-  isAdmin: boolean | undefined;
+  @Input() vehicle!: any;
+  @Input() isAdmin: boolean | undefined;
+
+  @Output() onDeleteVehicle: EventEmitter<Vehicle> = new EventEmitter();
+  @Output() onShowEditVehicle: EventEmitter<Vehicle> = new EventEmitter();
+
+  vehicleTypes = VehicleTypes;
 
   carImg: string = '../../../../../assets/images/car-icon.png';
   boatImg: string = '../../../../../assets/images/boat-icon.png';
   truckImg: string = '../../../../../assets/images/truck-icon.png';
 
-  public onDelete(): void {
-    console.log('vehiculo eliminado');
+  constructor(public auth: AuthService) {}
+
+  public onDelete(vehicle: Vehicle): void {
+    this.onDeleteVehicle.emit(vehicle);
+    // console.log('vehiculo eliminado');
   }
 
-  public onEdit(): void {
-    console.log('vehiculo editado');
+  public onEdit(vehicle: Vehicle): void {
+    this.onShowEditVehicle.emit(vehicle);
+    // console.log('a: ' + vehicle);
   }
 }

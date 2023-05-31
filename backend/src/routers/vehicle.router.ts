@@ -8,7 +8,7 @@ import { Truck, TruckModel } from "../models/vehicles/truck.model";
 import { sample_vehicles } from "../sample_data";
 
 const router = Router();
-
+//seed
 router.get(
   "/seed",
   asyncHandler(async (req, res) => {
@@ -26,6 +26,7 @@ router.get(
   })
 );
 
+//get
 router.get(
   "/",
   asyncHandler(async (req, res) => {
@@ -34,6 +35,7 @@ router.get(
   })
 );
 
+//create
 router.post(
   "/",
   asyncHandler(async (req, res) => {
@@ -57,6 +59,7 @@ router.post(
   })
 );
 
+//update
 router.put(
   "/:id",
   asyncHandler(async (req, res) => {
@@ -79,10 +82,12 @@ router.put(
 
 //delete
 router.delete(
-  "/:id",
+  "/:licensePlate",
   asyncHandler(async (req, res) => {
     try {
-      const vehicle = await VehicleModel.findByIdAndRemove(req.params.id);
+      const vehicle = await VehicleModel.findByIdAndRemove(
+        req.params.licensePlate
+      );
       if (!vehicle) {
         res.status(404).json({ error: "Vehículo no encontrado" });
       } else {
