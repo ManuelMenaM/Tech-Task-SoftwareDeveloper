@@ -74,6 +74,8 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente en tu sistema:
    ```
 
    La aplicación Angular se ejecutará en `http://localhost:4200` por defecto.
+   
+3. Una vez lanzada la aplicacion y el servidor, y se ha configurado la cadena de conexion con MONGODB, accede en el navegador a esta URL `http://localhost:5000/api/vehicles/seed` para problar tu Base de datos.
 
 ## Uso
 
